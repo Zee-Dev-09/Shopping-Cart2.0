@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Lilac Cottage · Shopping List</title>
+    <link rel="stylesheet" href="shopping-list.css" />
+</head>
+<body>
+    <nav class="cottage-nav" aria-label="Home">
+        <a class="cottage-brand" href="shopping-list.html">✧ the lilac cottage</a>
+        <button id="room-light" class="room-light" type="button" aria-pressed="false">☾ Evening light</button>
+    </nav>
+    <div class="home-layout">
+    <main class="shopping-list">
+        <header>
+            <p class="eyebrow">The cottage pantry</p>
+            <h1>A little list,<br>a lovely home.</h1>
+            <p class="subtitle">Your everyday essentials, all in one place.</p>
+        </header>
+        <form id="item-form">
+            <label for="item-input">What do you need?</label>
+            <div class="input-row">
+                <input id="item-input" name="item" type="text" placeholder="e.g. Apples" maxlength="120" required />
+                <button class="add-button" type="submit">+ Add</button>
+            </div>
+            <label class="price-label" for="price-input">Expected price (NGN, optional)</label>
+            <input id="price-input" class="price-input" type="number" min="0" max="999999999" step="0.01" placeholder="e.g. 1500.00" inputmode="decimal" />
+        </form>
+        <section aria-labelledby="list-title">
+            <div class="list-heading">
+                <h2 id="list-title">Your items</h2>
+                <span id="item-count" role="status"></span>
+            </div>
+            <progress id="progress" max="100" value="0" aria-label="Shopping progress"></progress>
+            <label class="sr-only" for="search">Find an item</label>
+            <input id="search" type="search" placeholder="Search your list…" />
+            <div class="toolbar">
+                <div class="filters" role="group" aria-label="Filter items">
+                    <button type="button" data-filter="all" aria-pressed="true">All</button>
+                    <button type="button" data-filter="pending" aria-pressed="false">To buy</button>
+                    <button type="button" data-filter="completed" aria-pressed="false">Completed</button>
+                </div>
+                <button id="clear-completed" class="text-button" type="button">Clear completed</button>
+            </div>
+            <div class="budget-summary" aria-label="Expected cost summary">
+                <div><span>Estimated total (NGN)</span><strong id="expected-total" role="status">0.00</strong></div>
+                <p id="remaining-total"></p>
+                <p id="unpriced-count"></p>
+            </div>
+            <ul id="items"></ul>
+            <p id="empty-message" class="empty" hidden>Your list is empty. Add something above!</p>
+        </section>
+        <p id="feedback" class="sr-only" role="status">Your list is saved on this device.</p>
+    </main>
+    <aside class="kitten-room" aria-labelledby="room-title">
+        <div class="room-intro"><p class="eyebrow">Make yourself at home</p><h2 id="room-title">A sunny little corner.</h2></div>
+        <div class="room-window" aria-hidden="true"><span class="window-sun"></span><span class="window-cloud"></span></div>
+        <div class="room-frame" aria-hidden="true">♡<small>stay cozy</small></div>
+        <div class="room-plant" aria-hidden="true"><span>❧</span><i></i></div>
+        <div class="room-rug" aria-hidden="true"></div>
+        <div class="cat-companion" role="img" aria-label="A fluffy grey and white kitten with amber eyes following your cursor">
+        <div class="cat-figure" aria-hidden="true">
+            <img class="cat-art" src="images/shopping-kitten.png" alt="" width="1254" height="1254" />
+            <div class="cat-eye cat-eye-left"><div class="cat-pupil"><img src="images/shopping-kitten.png" alt="" /></div></div>
+            <div class="cat-eye cat-eye-right"><div class="cat-pupil"><img src="images/shopping-kitten.png" alt="" /></div></div>
+        </div>
+
+    </div>
+        <div class="room-care">
+            <span class="room-tag">✧ Meet Mochi</span>
+            <p id="cat-message" role="status">A little company makes every day sweeter.</p>
+            <div class="care-actions">
+                <button id="pet-cat" type="button">♡ Give a cuddle</button>
+                <button id="treat-cat" type="button">✧ Give a treat</button>
+            </div>
+        </div>
+        <span class="cat-heart" aria-hidden="true">♡</span>
+    </aside>
+    </div>
+    <footer class="cottage-footer">Made for slow mornings &amp; little joys.</footer>
+    <script src="shopping-list.js" defer></script>
+</body>
+</html>

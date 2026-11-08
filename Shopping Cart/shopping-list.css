@@ -1,0 +1,1018 @@
+/* Palette */
+:root {
+    color-scheme: light;
+    --ink: #382944;
+    --muted: #796787;
+    --purple: #765096;
+    --border: #e7daef;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Background and main card */
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 48px 20px;
+    background:
+        radial-gradient(ellipse at 12% 12%, #dec9f1 0%, transparent 48%),
+        radial-gradient(ellipse at 90% 85%, #efd8e8 0%, transparent 45%),
+        #f6f0fa;
+    color: var(--ink);
+    font-family: "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.shopping-list {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    padding: 48px 40px 30px;
+    border: 1px solid #ffffff;
+    border-radius: 30px;
+    background: linear-gradient(145deg, #fffdfefa, #faf5fffa);
+    box-shadow:
+        0 28px 80px #6840801a,
+        0 4px 16px #68408008,
+        inset 0 0 0 6px #ffffff70;
+}
+
+.shopping-list::before {
+    content: "✧";
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 24px;
+    border: 1px solid #dcc6e9;
+    border-radius: 50%;
+    background: #f1e6f8;
+    color: var(--purple);
+    font-size: 30px;
+}
+
+/* Editorial heading */
+.eyebrow {
+    margin: 0 0 14px;
+    color: var(--purple);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.1px;
+    line-height: 1.8;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    font-size: clamp(38px, 8vw, 52px);
+    font-weight: 400;
+    letter-spacing: -1.8px;
+    line-height: 1.1;
+}
+
+.subtitle {
+    max-width: 320px;
+    margin: 16px 0 32px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Add an item */
+label[for="item-input"] {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+#item-input {
+    min-width: 0;
+    flex: 1;
+    padding: 15px 16px;
+    border: 1px solid #dfcfe9;
+    border-radius: 14px;
+    background: #fffaff;
+    color: var(--ink);
+    font: inherit;
+    font-size: 14px;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+#item-input::placeholder {
+    color: #92809f;
+}
+
+#item-input:focus {
+    border-color: #a37bbd;
+    box-shadow: 0 0 0 4px #b88bd51a;
+}
+
+button {
+    cursor: pointer;
+    font: inherit;
+    touch-action: manipulation;
+    transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.add-button {
+    min-height: 48px;
+    padding: 12px 23px;
+    border: 1px solid #795393;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #8961a6, #694383);
+    box-shadow: 0 5px 12px #76509626, inset 0 1px 0 #ffffff30;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.add-button:hover {
+    background: #65407f;
+    box-shadow: 0 7px 18px #76509633;
+    transform: translateY(-1px);
+}
+
+.add-button:active {
+    transform: translateY(0);
+}
+
+:focus-visible {
+    outline: 3px solid #9b70b7;
+    outline-offset: 4px;
+}
+
+/* Shopping items */
+.list-heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 34px 0 16px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+#item-count {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: #f1e8f7;
+    color: #705380;
+    font-size: 11px;
+}
+
+ul {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: #ffffffb3;
+    box-shadow: 0 2px 4px #54336303;
+    transition: background 180ms ease, border-color 180ms ease;
+}
+
+li:hover {
+    border-color: #d2b9e2;
+    background: #fff;
+}
+
+li:has(input:checked) {
+    background: #f1eaf5;
+}
+
+.item-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+    min-width: 0;
+    min-height: 44px;
+    cursor: pointer;
+}
+
+.item-label span {
+    overflow-wrap: anywhere;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    flex-shrink: 0;
+    accent-color: var(--purple);
+    cursor: pointer;
+}
+
+input:checked + span {
+    color: #877392;
+    text-decoration: line-through;
+    text-decoration-color: #b39cc0;
+}
+
+.remove-button {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 11px;
+    background: transparent;
+    color: #8c769a;
+    font-size: 23px;
+    line-height: 1;
+}
+
+.remove-button:hover {
+    background: #f7e6ef;
+    color: #984e75;
+}
+
+.hint,
+.empty {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.hint {
+    margin: 26px 0 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    font-family: Georgia, serif;
+    font-style: italic;
+}
+
+.empty {
+    padding: 28px 12px;
+    border: 1px dashed #d7c2e4;
+    border-radius: 15px;
+}
+
+/* Small screens and motion preferences */
+@media (max-width: 400px) {
+    body {
+        padding: 24px 12px;
+    }
+
+    .shopping-list {
+        padding: 30px 22px 24px;
+        border-radius: 24px;
+    }
+
+    .add-button {
+        padding-inline: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    button,
+    #item-input,
+    li {
+        transition: none;
+    }
+}
+
+/* Slowly moving pools of lilac light */
+body {
+    position: relative;
+    isolation: isolate;
+    overflow-x: hidden;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    width: min(65vw, 650px);
+    height: min(65vw, 650px);
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, #bf91e552, transparent 68%);
+    animation: drifting-light 14s ease-in-out infinite alternate;
+}
+
+body::before {
+    top: -15%;
+    left: -15%;
+}
+
+body::after {
+    right: -15%;
+    bottom: -15%;
+    background: radial-gradient(circle, #efbddd66, transparent 68%);
+    animation-delay: -7s;
+}
+
+.shopping-list::before {
+    animation: jewel-glow 5s ease-in-out infinite;
+}
+
+@keyframes drifting-light {
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+    to {
+        transform: translate(12vw, 8vh) scale(1.15);
+    }
+}
+
+@keyframes jewel-glow {
+    0%, 100% {
+        box-shadow: 0 0 12px #b88bd526;
+    }
+    50% {
+        box-shadow: 0 0 28px #b88bd566;
+    }
+}
+
+/* Progress, search, and list controls */
+#progress {
+    display: block;
+    width: 100%;
+    height: 7px;
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 20px;
+    background: #eae0f0;
+    accent-color: var(--purple);
+}
+
+#progress::-webkit-progress-bar {
+    border-radius: 20px;
+    background: #eae0f0;
+}
+
+#progress::-webkit-progress-value {
+    border-radius: 20px;
+    background: linear-gradient(90deg, #b998d1, #765096);
+    transition: width 300ms ease;
+}
+
+#progress::-moz-progress-bar {
+    border-radius: 20px;
+    background: #765096;
+}
+
+.search-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#search {
+    width: 100%;
+    min-height: 44px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fffaff;
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 12px 0 16px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.filters button,
+.text-button {
+    min-height: 44px;
+    padding: 9px 10px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: #705380;
+    font-size: 12px;
+}
+
+.filters button[aria-pressed="true"] {
+    border-color: #dfcdeb;
+    background: #ecdef5;
+    color: #513266;
+    font-weight: 600;
+}
+
+.filters button:hover,
+.text-button:hover:not(:disabled) {
+    background: #f0e4f7;
+}
+
+.text-button:disabled {
+    color: #89798f;
+    cursor: default;
+    opacity: 0.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::before,
+    body::after,
+    .shopping-list::before {
+        animation: none;
+    }
+
+    #progress::-webkit-progress-value {
+        transition: none;
+    }
+}
+/* Fluffy reference-inspired kitten, with masked animated eye artwork */
+.cat-companion {
+    position: fixed;
+    right: clamp(16px, 3vw, 56px);
+    bottom: 24px;
+    width: clamp(200px, 23vw, 310px);
+    pointer-events: none;
+}
+
+.cat-figure {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    filter: drop-shadow(0 14px 14px #62407820);
+}
+
+.cat-art {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.cat-eye {
+    position: absolute;
+    top: 33%;
+    width: 15%;
+    height: 13%;
+    overflow: hidden;
+    border-radius: 50%;
+    /* Feather the eye patch into the original fur and eyelids. */
+    mask-image: radial-gradient(ellipse, #000 55%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse, #000 55%, transparent 72%);
+}
+
+.cat-eye-left {
+    left: 31.2%;
+}
+
+.cat-eye-right {
+    left: 58%;
+}
+
+.cat-pupil {
+    position: absolute;
+    inset: 0;
+    transform: translate(var(--look-x, 0px), var(--look-y, 0px));
+}
+
+.cat-pupil img {
+    position: absolute;
+    top: -253.846%;
+    width: 666.667%;
+    max-width: none;
+    height: auto;
+}
+
+.cat-eye-left img {
+    left: -208%;
+}
+
+.cat-eye-right img {
+    left: -386.667%;
+}
+
+.cat-caption {
+    display: block;
+    margin-top: 12px;
+    color: #796787;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+}
+
+@media (max-width: 1100px) {
+    .cat-companion {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 220px;
+        margin: 24px auto 0;
+    }
+}
+
+/* The lilac cottage: a pantry notebook beside Mochi's living room */
+body {
+    display: block;
+    padding: 0 28px;
+    background:
+        radial-gradient(ellipse at 80% 20%, #ead6f080, transparent 60%),
+        repeating-linear-gradient(90deg, transparent 0 79px, #ad86be08 79px 80px),
+        #f7f0f7;
+    transition: background-color 600ms ease;
+}
+
+.cottage-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 28px 0;
+    border-bottom: 1px solid #d8c6df80;
+}
+
+.cottage-brand {
+    color: var(--ink);
+    font-family: Georgia, serif;
+    font-size: 23px;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.room-light,
+.care-actions button {
+    min-height: 44px;
+    padding: 10px 17px;
+    border: 1px solid #d9c5e3;
+    border-radius: 30px;
+    background: #fff8fc;
+    color: #624577;
+    font-size: 12px;
+}
+
+.room-light:hover,
+.care-actions button:hover {
+    background: #eeddf4;
+    transform: translateY(-2px);
+}
+
+.home-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 48px auto 32px;
+}
+
+.shopping-list {
+    max-width: none;
+    padding: 36px;
+    background: #fffdfaf5;
+    border-radius: 8px 28px 28px 8px;
+    border-left: 6px solid #dec9e9;
+    box-shadow: 0 18px 45px #68408010;
+}
+
+.shopping-list::before {
+    display: none;
+}
+
+h1 {
+    font-size: clamp(36px, 4vw, 49px);
+}
+
+.kitten-room {
+    position: sticky;
+    top: 24px;
+    min-height: 720px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid #e3d0e6;
+    border-radius: 160px 160px 28px 28px;
+    background:
+        linear-gradient(0deg, #e6cfdc 0 25%, transparent 25%),
+        repeating-linear-gradient(90deg, #f6e9f3 0 36px, #f0e0ee 36px 38px);
+    box-shadow: inset 0 0 50px #d9b8d938, 0 20px 50px #6840800c;
+}
+
+.room-intro {
+    position: relative;
+    z-index: 2;
+    padding: 42px 20px 0;
+    text-align: center;
+}
+
+.room-intro .eyebrow {
+    margin-bottom: 6px;
+}
+
+.room-intro h2 {
+    font: italic 27px Georgia, serif;
+}
+
+.room-window {
+    position: absolute;
+    top: 150px;
+    right: 54px;
+    width: 190px;
+    height: 230px;
+    overflow: hidden;
+    border: 10px solid #fff9f2;
+    border-radius: 90px 90px 4px 4px;
+    background: linear-gradient(#c9ccef, #fce5dd);
+    box-shadow: 8px 12px 0 #d9c1d43b, 0 0 40px #fff5d580;
+}
+
+.room-window::before,
+.room-window::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    background: #fff9f2;
+}
+
+.room-window::before {
+    width: 7px;
+    height: 100%;
+    left: calc(50% - 3px);
+}
+
+.room-window::after {
+    height: 7px;
+    width: 100%;
+    top: 55%;
+}
+
+.window-sun {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #fff5cf;
+    box-shadow: 0 0 35px #ffefbe;
+}
+
+.window-cloud {
+    position: absolute;
+    top: 86px;
+    width: 90px;
+    height: 23px;
+    border-radius: 50%;
+    background: #ffffff85;
+    animation: cottage-cloud 16s ease-in-out infinite alternate;
+}
+
+.room-frame {
+    position: absolute;
+    top: 190px;
+    left: 35px;
+    padding: 14px;
+    border: 6px solid #dac0b1;
+    outline: 1px solid #fff5ed;
+    background: #fff8f2;
+    color: #bb86a4;
+    font: 44px Georgia, serif;
+    text-align: center;
+    transform: rotate(-7deg);
+}
+
+.room-frame small {
+    display: block;
+    font: italic 12px Georgia, serif;
+}
+
+.room-plant {
+    position: absolute;
+    top: 325px;
+    left: 38px;
+    color: #8caa8c;
+    text-align: center;
+}
+
+.room-plant span {
+    display: block;
+    font: 90px Georgia, serif;
+    line-height: 0.8;
+    transform: rotate(-30deg);
+}
+
+.room-plant i {
+    display: block;
+    width: 55px;
+    height: 45px;
+    border-radius: 4px 4px 22px 22px;
+    background: linear-gradient(90deg, #bb92ae, #e5c2d4);
+}
+
+.room-rug {
+    position: absolute;
+    top: 463px;
+    left: 8%;
+    width: 84%;
+    height: 115px;
+    border: 8px solid #f2d5e7;
+    border-radius: 50%;
+    background: repeating-radial-gradient(ellipse, #e5bad7 0 5px, #edc8e0 6px 9px);
+    box-shadow: 0 9px 14px #92708c20;
+}
+
+.kitten-room .cat-companion {
+    position: absolute;
+    top: 245px;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    width: 290px;
+    max-width: 82%;
+    margin: 0;
+    transform: translateX(-50%);
+}
+
+.room-care {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 25px;
+    text-align: center;
+}
+
+.room-tag {
+    color: #624577;
+    font: 23px Georgia, serif;
+}
+
+.room-care p {
+    min-height: 38px;
+    margin: 10px auto;
+    color: #705b7c;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.care-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.cat-heart {
+    position: absolute;
+    top: 290px;
+    right: 21%;
+    opacity: 0;
+    color: #b45c91;
+    font-size: 38px;
+    pointer-events: none;
+}
+
+.is-loved .cat-heart {
+    animation: cuddle-heart 1.3s ease-out;
+}
+
+.cottage-footer {
+    padding: 12px 0 32px;
+    color: var(--muted);
+    font: italic 13px Georgia, serif;
+    text-align: center;
+}
+
+body.evening {
+    background-color: #e3d8eb;
+}
+
+.evening .kitten-room {
+    background:
+        linear-gradient(0deg, #d1b9d0 0 25%, transparent 25%),
+        repeating-linear-gradient(90deg, #e5d5ea 0 36px, #dfcce5 36px 38px);
+}
+
+.evening .room-window {
+    background: linear-gradient(#514c7b, #b8a3ca);
+    box-shadow: 0 0 40px #ffedb440;
+}
+
+.evening .window-sun {
+    background: #fff3d4;
+    box-shadow: inset 12px -4px 0 #b8a3ca, 0 0 25px #fff0c44d;
+}
+
+@keyframes cottage-cloud {
+    from { transform: translateX(-35px); }
+    to { transform: translateX(110px); }
+}
+
+@keyframes cuddle-heart {
+    0% { opacity: 0; transform: translateY(10px) scale(0.7); }
+    30% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-55px) scale(1.2); }
+}
+
+@media (max-width: 800px) {
+    body { padding: 0 16px; }
+    .home-layout {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 540px;
+        margin-top: 28px;
+        gap: 28px;
+    }
+    .shopping-list { padding: 28px 22px; }
+    .kitten-room { position: relative; top: auto; min-height: 720px; }
+    .cottage-brand { font-size: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .window-cloud,
+    .is-loved .cat-heart { animation: none; }
+    .is-loved .cat-heart { opacity: 1; }
+    body { transition: none; }
+}
+
+/* Keep window panes inside the window's own background layer. */
+.room-window {
+    z-index: 0;
+}
+
+.room-rug {
+    z-index: 1;
+}
+
+.kitten-room .cat-companion {
+    z-index: 2;
+}
+
+.room-care,
+.cat-heart {
+    z-index: 3;
+}
+
+/* Expected prices and the whole-list estimate */
+.price-label {
+    display: block;
+    margin: 16px 0 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.price-input,
+.item-price input {
+    min-height: 44px;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fffaff;
+    color: var(--ink);
+    font: inherit;
+    font-size: 14px;
+}
+
+.budget-summary {
+    padding: 18px;
+    margin-bottom: 18px;
+    border: 1px solid #dfcdeb;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #f1e5f8, #fff6fa);
+}
+
+.budget-summary > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.budget-summary strong {
+    color: #624577;
+    font-size: 23px;
+    overflow-wrap: anywhere;
+}
+
+.budget-summary p {
+    margin: 9px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+#items li {
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#items .item-label {
+    flex-basis: 110px;
+}
+
+.item-price {
+    width: 112px;
+}
+
+.item-price input {
+    padding: 8px;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 380px) {
+    #items .item-label {
+        flex-basis: calc(100% - 60px);
+    }
+
+    .item-price {
+        order: 1;
+        width: 100%;
+    }
+}
+
+/* Keep helpful labels available to screen readers without repeating them visually. */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.item-price {
+    flex-shrink: 0;
+    width: 104px;
+}
+
+.item-price input {
+    background: transparent;
+    border-color: transparent;
+    text-align: right;
+}
+
+.item-price input:hover,
+.item-price input:focus {
+    border-color: var(--border);
+    background: #fffaff;
+}
+
+.item-price input::placeholder {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.budget-summary p[hidden] {
+    display: none;
+}
+
+@media (max-width: 380px) {
+    .item-price {
+        width: 100%;
+    }
+
+    .item-price input {
+        text-align: left;
+    }
+}
